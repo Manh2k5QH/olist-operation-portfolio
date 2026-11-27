@@ -1,0 +1,15 @@
+# Local data and generated models
+data/
+*.pbix
+*.pbit
+**/.pbi/
+**/__pycache__/
+*.pyc
+.venv/
+.validation/
+.audit-deps/
+.publication/
+evidence/delivered_order_mart.csv
+*.tmp
+*.bak
+.env
