@@ -1,8 +1,8 @@
 # Olist Operations Diagnostic
 
-**Business Analysis Â· Data Analysis Â· SQL Â· Python Â· Power BI**
+**Business Analysis · Data Analysis · SQL · Python · Power BI**
 
-[Download Power BI report](https://github.com/Manh2k5QH/olist-operation-portfolio/raw/refs/heads/main/project.pbix) Â· [Executive memo](docs/12_executive_memo.pdf) Â· [DAX measures](dax/measures.md) Â· [BA requirements](docs/07_BRD.md)
+[Download Power BI report](https://github.com/Manh2k5QH/olist-operation-portfolio/raw/refs/heads/main/project.pbix) · [Executive memo](docs/12_executive_memo.pdf) · [DAX measures](dax/measures.md) · [BA requirements](docs/07_BRD.md)
 
 A historical marketplace case study connecting delivery performance and customer experience to a proposed exception-management pilot. Includes five dashboard pages, traceable BA deliverables and independently checked metrics.
 
@@ -35,7 +35,7 @@ The **1,550,922 source rows** represent different business grains.
 The analysis validates keys, parses dates, reconciles financial populations and creates delivery, seller and category marts. Three choices materially affect the result.
 
 - **Calendar-date delivery promise.** Delivery on the estimated date counts as on time. The delivery KPI uses **96,470** delivered orders with both dates, excluding **8** delivered orders whose dates are incomplete. Comparing timestamps would classify another **1,292** same-date deliveries as late.
-- **Respect each business grain.** Reviews and item amounts are aggregated by order before joining. Seller delivery exposure counts each sellerâ€“order pair once. Repeat behavior uses `customer_unique_id`, since one person can have several order-linked `customer_id` values.
+- **Respect each business grain.** Reviews and item amounts are aggregated by order before joining. Seller delivery exposure counts each seller–order pair once. Repeat behavior uses `customer_unique_id`, since one person can have several order-linked `customer_id` values.
 - **Preserve financial meaning.** Item GMV sums price across all item statuses. Delivered GMV and delivery-eligible GMV are labeled separately. Freight share uses total freight divided by total item price plus freight. Geolocation is excluded from direct joins because postal prefixes repeat.
 
 ![Source data and analytical lineage](images/diagram-data-lineage.png)
@@ -76,7 +76,7 @@ All five images are cropped captures from the actual redesigned Power BI Desktop
 
 ## 5. Recommendation
 
-Run a **focused delivery exception pilot** in a destination group with sufficient actionable volume, reliable current-status events and assigned operations capacity. SP and RJ are candidates for readiness assessment. The snapshot alone does not establish an originâ€“destination route or carrier cause.
+Run a **focused delivery exception pilot** in a destination group with sufficient actionable volume, reliable current-status events and assigned operations capacity. SP and RJ are candidates for readiness assessment. The snapshot alone does not establish an origin–destination route or carrier cause.
 
 The proposed queue begins **3 calendar days before ETA**, records an owner and response deadline, and tracks actions through closure. Pilot launch depends on validating the threshold, staffing, consented communications, an appropriate comparator, sample size and outcome follow-up.
 
@@ -121,6 +121,6 @@ The analytical stack is **DuckDB SQL, Python and Power BI**. Documentation uses 
 
 ## Acceptance and handoff
 
-The historical portfolio has passed 26 native SQLâ€“DAX comparisons and a relocated, cache-free Desktop refresh, alongside all 31 analytical queries. The Delivery page includes a guarded MoM indicator. See [executed UAT](docs/14_dashboard_uat.md), [completion assessment](docs/13_completion_review.md), [operational handoff](docs/16_operational_handoff.md) and [release hashes](evidence/report_release.json). Live pilot implementation and stakeholder approvals remain separate dependencies.
+The historical portfolio has passed 26 native SQL–DAX comparisons and a relocated, cache-free Desktop refresh, alongside all 31 analytical queries. The Delivery page includes a guarded MoM indicator. See [executed UAT](docs/14_dashboard_uat.md), [completion assessment](docs/13_completion_review.md), [operational handoff](docs/16_operational_handoff.md) and [release hashes](evidence/report_release.json). Live pilot implementation and stakeholder approvals remain separate dependencies.
 
 To refresh the PBIX on another machine, open Transform data, edit the `ProjectRoot` value in the OlistAll query to the local repository folder, and refresh. The initial embedded report can be viewed without refreshing. Python evidence generation requires Python 3.12 and the pinned DuckDB dependency.
