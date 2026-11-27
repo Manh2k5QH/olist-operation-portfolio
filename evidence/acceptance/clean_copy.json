@@ -1,0 +1,21 @@
+{
+  "checked_at_utc": "2026-11-27T00:53:55.076391+00:00",
+  "folder": "<PROJECT_ROOT>\\.validation\\clean-copy",
+  "environment_python": "<PROJECT_ROOT>\\.validation\\env\\Scripts\\python.exe",
+  "duckdb_version": "2.0.1",
+  "commands": [
+    {
+      "script": "profile_olist.py",
+      "exit_code": 0
+    },
+    {
+      "script": "check_metrics.py",
+      "exit_code": 0
+    }
+  ],
+  "kpi_parity": true,
+  "absolute_float_tolerance": 1e-08,
+  "source_hashes_match": 9,
+  "cache_copied": false,
+  "desktop_refresh": "Passed: cache-free relocated PBIP refreshed in Desktop; full-snapshot GMV13.59M, Orders99.44K, late6.8%, repeat3.1% observed"
+}

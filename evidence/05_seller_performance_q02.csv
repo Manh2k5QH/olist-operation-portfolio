@@ -1,0 +1,2 @@
+label,p10_late_rate,p25_late_rate,p50_median,p75_late_rate,p90_late_rate,avg_late_rate
+Seller delivery quality distribution (n=627 sellers with ≥30 orders),1.46,3.13,5.47,9.09,12.63,6.52

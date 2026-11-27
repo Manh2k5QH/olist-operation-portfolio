@@ -1,0 +1,6 @@
+reconciliation_group,orders,item_amount,payment_amount,difference
+items_without_payment,1,143.46,0.0,-143.46
+matched,98089,15699060.82,15699060.82,0.0
+payment_higher,367,74712.27,77783.44,3071.17
+payment_lower,209,69636.69,69435.91,-200.78
+payment_without_items,775,0.0,162591.95,162591.95

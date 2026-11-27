@@ -1,0 +1,110 @@
+{
+  "generated_at_utc": "2026-11-26T18:13:00.980634+00:00",
+  "python_version": "3.12.14",
+  "duckdb_version": "2.0.1",
+  "sla_definition": "Delivered calendar date later than estimated calendar date",
+  "source_files": [
+    {
+      "path": "data/olist_customers_dataset.csv",
+      "rows": 99441,
+      "bytes": 9033957,
+      "sha256": "983a422239e1712ded753b3bf9ecf47dc73f144d306029dcfa99e70a226883d2"
+    },
+    {
+      "path": "data/olist_geolocation_dataset.csv",
+      "rows": 1000163,
+      "bytes": 61273883,
+      "sha256": "b514f6fc991b9566aeba02aa5d67e2c3630f034b60a0e05aa0d082a3b66d88d6"
+    },
+    {
+      "path": "data/olist_order_items_dataset.csv",
+      "rows": 112650,
+      "bytes": 15438671,
+      "sha256": "0bc4d068c4fe38cbb01bd90e8746e3c613fe7b4baef75fab7b0e329701c3e279"
+    },
+    {
+      "path": "data/olist_order_payments_dataset.csv",
+      "rows": 103886,
+      "bytes": 5777138,
+      "sha256": "4f713964f2815dbbaa40b9488268c55aac3627bfce5aa96cf58d1f3616de3cc0"
+    },
+    {
+      "path": "data/olist_order_reviews_dataset.csv",
+      "rows": 99224,
+      "bytes": 14451670,
+      "sha256": "012b61c7593e34f51fa614efdf802b9c7056ce6aae5307ddb93236e7cfc797d7"
+    },
+    {
+      "path": "data/olist_orders_dataset.csv",
+      "rows": 99441,
+      "bytes": 17654914,
+      "sha256": "8df58ef3d2d7e9944010f7beecd9b75367f5588ec6e3c91cec19ae3345ef9ecf"
+    },
+    {
+      "path": "data/olist_products_dataset.csv",
+      "rows": 32951,
+      "bytes": 2379446,
+      "sha256": "3e6569628a17fbc75fd206ee357b59e20364b9afa90f5b6cd5b4d624c58aa9cc"
+    },
+    {
+      "path": "data/olist_sellers_dataset.csv",
+      "rows": 3095,
+      "bytes": 174703,
+      "sha256": "1f643d2b950373b85735e7794b20986f528d7a000432e7c6f9bcbb44d0846a0e"
+    },
+    {
+      "path": "data/product_category_name_translation.csv",
+      "rows": 71,
+      "bytes": 2613,
+      "sha256": "a81f0d1f27b27e7293f761bc79e3ce8f348ee39c4b3ed3e49bde38f478586278"
+    }
+  ],
+  "code_files": [
+    {
+      "path": "scripts/profile_olist.py",
+      "sha256": "e26de29b2735705dce08baf69353a7914dba5f3adb7c3edd5d5de599b644d7a0"
+    },
+    {
+      "path": "sql/analysis/01_control_totals.sql",
+      "sha256": "203a333826659bb48a89ebac512d56baa1927ef842747a1acac6b29147631af9"
+    },
+    {
+      "path": "sql/analysis/02_delivery_analysis.sql",
+      "sha256": "e2915325880c2a8a553328d3710ee85675a443604afb3c90902b3343b6da4c1a"
+    },
+    {
+      "path": "sql/analysis/03_customer_analysis.sql",
+      "sha256": "3f6feab16e3df6e2a8f828e1786697f24ca8667c2bff1fac700c7f0badaf949c"
+    },
+    {
+      "path": "sql/analysis/04_revenue_category.sql",
+      "sha256": "1756ca5c393002793994ee3beb4c4f31aa83538b884ac96b823465e3c280e64a"
+    },
+    {
+      "path": "sql/analysis/05_seller_performance.sql",
+      "sha256": "632db9357967d22864ef4dd6511b6263f9e9f6ef1e52fd468e30f4954882df75"
+    },
+    {
+      "path": "sql/analysis/06_delivery_uncertainty.sql",
+      "sha256": "a4c55c4347c7c6916fdb9f8dc3bf3e5c24cc3899ff271814e267514c206b7638"
+    },
+    {
+      "path": "sql/views/01_stg_orders.sql",
+      "sha256": "f3486642300f4d0e8e7c4453a5015cc3c7b83f32025318869eefc45344cbacea"
+    },
+    {
+      "path": "sql/views/02_mart_order_delivery.sql",
+      "sha256": "31a3c3f4be1be0d0398444fedb8a7eb06f07f5214ecec89686569f592fac7f0c"
+    },
+    {
+      "path": "sql/views/03_mart_category.sql",
+      "sha256": "709743872b8ca7ad780cc159b569a70e043beda365c8dd975003e969696317e8"
+    },
+    {
+      "path": "sql/views/04_mart_seller.sql",
+      "sha256": "a7b70cf4ac9dbed2d1f46c2c1690614e6d944854b8b570763a456c0024296466"
+    }
+  ],
+  "delivery_export_refreshed": false,
+  "analysis_query_count": 31
+}

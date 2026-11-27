@@ -1,0 +1,21 @@
+segment,seller_id,seller_state,total_orders,gmv,late_rate_pct,avg_review,volume_flag
+Top 10 by GMV,4869f7a5dfa277a7dca6462dcf3b52b2,SP,1132,229472.63,10.5,4.15,sufficient
+Top 10 by GMV,53243585a1d6dc2643021fd1853d8905,BA,358,222776.05,3.45,4.19,sufficient
+Top 10 by GMV,4a3ca9315b744ce9f8e9374361493884,SP,1806,200472.92,9.71,3.85,sufficient
+Top 10 by GMV,fa1c13f2614d7b5c4749cbc52fecda94,SP,585,194042.03,9.17,4.37,sufficient
+Top 10 by GMV,7c67e1448b00f6e969d365cea6b010ab,SP,982,187923.89,9.15,3.5,sufficient
+Top 10 by GMV,7e93a43ef30c4f03f38b393420bc753a,SP,336,176431.87,4.7,4.36,sufficient
+Top 10 by GMV,da8622b14eb17ae2831f4ac5b9dab84a,SP,1314,160236.57,6.64,4.18,sufficient
+Top 10 by GMV,7a67c85e85bb2ce8582c35f2203ad736,SP,1160,141745.53,5.24,4.27,sufficient
+Top 10 by GMV,1025f0e2d44d7041d6cf58b6550e0bfa,SP,915,138968.55,7.91,4.01,sufficient
+Top 10 by GMV,955fee9216a65b617aa5c0531780ce60,SP,1287,135171.7,6.11,4.2,sufficient
+Bottom 10 by late rate (≥30 orders),ede0c03645598cdfc63ca8237acbe73d,SP,46,2518.37,32.56,3.57,sufficient
+Bottom 10 by late rate (≥30 orders),ad781527c93d00d89a11eecd9dcad7c1,SP,44,6899.57,31.58,3.34,sufficient
+Bottom 10 by late rate (≥30 orders),54965bbe3e4f07ae045b90b0b8541f52,PR,78,10961.3,30.14,3.14,sufficient
+Bottom 10 by late rate (≥30 orders),2a1348e9addc1af5aaa619b1a3679d6b,MG,52,2843.0,27.08,3.17,sufficient
+Bottom 10 by late rate (≥30 orders),835f0f7810c76831d6c7d24c7a646d4d,SP,44,5130.0,26.19,3.36,sufficient
+Bottom 10 by late rate (≥30 orders),beadbee30901a7f61d031b6b686095ad,SP,64,4373.98,23.44,3.91,sufficient
+Bottom 10 by late rate (≥30 orders),a49928bcdf77c55c6d6e05e09a9b4ca5,SP,98,8816.7,21.88,3.03,sufficient
+Bottom 10 by late rate (≥30 orders),ef990a83bbea832f36ebe81376335aa8,SC,43,4642.59,20.93,3.63,sufficient
+Bottom 10 by late rate (≥30 orders),712e6ed8aa4aa1fa65dab41fed5737e4,SC,79,39815.0,20.78,3.39,sufficient
+Bottom 10 by late rate (≥30 orders),3fd1e727ba94cfe122d165e176ce7967,SP,37,2805.2,20.0,3.94,sufficient

@@ -1,0 +1,161 @@
+{
+  "verified_at_utc": "2026-11-27T01:14:13.054671+00:00",
+  "scope": "Historical BA/DA portfolio; complete business/operational acceptance is not claimed.",
+  "report": {
+    "path": "project.pbix",
+    "sha256": "75232315be1e1d3322af78edd979fdf196f4ca67ea47816a71024c69bff95f86",
+    "bytes": 55481247,
+    "saved_by": "Power BI Desktop native Save",
+    "native_source": "project.pbip"
+  },
+  "readback": {
+    "measures": 27,
+    "eligible_deliveries": 96470,
+    "late_orders": 6534,
+    "item_gmv": 13591643.7,
+    "payment_total": 16008872.12,
+    "visual_types": [
+      "actionButton",
+      "barChart",
+      "card",
+      "columnChart",
+      "donutChart",
+      "lineChart",
+      "shape",
+      "slicer",
+      "tableEx",
+      "textbox",
+      "treemap"
+    ]
+  },
+  "screenshots": {
+    "images\\dashboard-overview.png": {
+      "sha256": "db044e95b0ceca7ce2c17f814565ced63a1fafeabc2983e31c5fbd2bb2b80782",
+      "bytes": 230540
+    },
+    "images\\dashboard-sales.png": {
+      "sha256": "8b38b5885ac67c4b6ea7b0e16615250752385072409ec0ca8cd10c0e82f475b6",
+      "bytes": 265444
+    },
+    "images\\dashboard-customers.png": {
+      "sha256": "689cce6249f61ac0f428d75c5b933b0e2b46b96a4bbe315a0c1ab789d1242c17",
+      "bytes": 240188
+    },
+    "images\\dashboard-delivery.png": {
+      "sha256": "d370cb54d305dc2e8df133deb464f7dbae232e55150b58ec037350a95f48bd5d",
+      "bytes": 331958
+    },
+    "images\\dashboard-reviews.png": {
+      "sha256": "b3da4ac408d9758e05ab4ef3e0629e72025dc93d6c416bcbfdab4a04cce2d1e2",
+      "bytes": 186086
+    }
+  },
+  "source_manifest": {
+    "path": "evidence/reproducibility_manifest.json",
+    "sha256": "cdfc65465427e1ea1fa9c4415928cfea3f6355733c8d2c9319e88740a4c20a26"
+  },
+  "acceptance_register": "docs/14_dashboard_uat.md",
+  "remaining_work": "docs/13_completion_review.md",
+  "acceptance_evidence": {
+    "evidence/acceptance/apply_mom.tmdl": {
+      "sha256": "abd96161c5c491520d6337591fd34bee87f3ed8af67b9f9c5f6922465028da63",
+      "bytes": 1596
+    },
+    "evidence/acceptance/apply_mom_status.tmdl": {
+      "sha256": "b5af3c441770b6402ad0888b474bc13b64cb23aa6e154718ef594ea23753e17d",
+      "bytes": 799
+    },
+    "evidence/acceptance/clean-check_metrics.py.log": {
+      "sha256": "a94cd507f378b5fb6da55aacc24403531b95c0f83184232204cc7760afcda8c4",
+      "bytes": 67
+    },
+    "evidence/acceptance/clean-profile_olist.py.log": {
+      "sha256": "24262a1f5f598476f8528f441de674810a91aa08be7240b13ddd79c0b673468c",
+      "bytes": 1701
+    },
+    "evidence/acceptance/clean-refresh.png": {
+      "sha256": "ff0c9d225bbfdc53412209adcb128eedaef43c82b58aca7d87b906ca57cdd022",
+      "bytes": 228486
+    },
+    "evidence/acceptance/clean_copy.json": {
+      "sha256": "7ab3a2808570d3e3c8ce29b2413be10984cc77df408919c64d828958a960290d",
+      "bytes": 680
+    },
+    "evidence/acceptance/manual-empty.png": {
+      "sha256": "519504ad77de14c7af0e02d80d8190671b93b4b4b634d28e958fd155ed276ef5",
+      "bytes": 194479
+    },
+    "evidence/acceptance/manual-low-seller.png": {
+      "sha256": "0d802459c7b2422ad2efaa722ca9e9b9a3b934c3ff740f56c23b5e32c9d6a696",
+      "bytes": 291686
+    },
+    "evidence/acceptance/manual-mom-jan2018.png": {
+      "sha256": "d1fb1022159ccf1c21ac85bc0115904ad863279e78f079c4b123ca410489828b",
+      "bytes": 283589
+    },
+    "evidence/acceptance/manual-multi-category.png": {
+      "sha256": "e0052fe3ea63bb9df1d37557ec9e5e59f0ebd9b5a4a5e9207c64be7311426729",
+      "bytes": 211560
+    },
+    "evidence/acceptance/manual_category_reference.json": {
+      "sha256": "6c7bad62d88ad6a982444cfc1c953823cec922c23625994b63f9bbc9eb3e570e",
+      "bytes": 102
+    },
+    "evidence/acceptance/manual_seller_reference.json": {
+      "sha256": "d32d5d81b186a54a49d95a6b37986a8f2b72a1fa58ae4bc2b5bf234d31e48fc8",
+      "bytes": 112
+    },
+    "evidence/acceptance/mom-status-red.png": {
+      "sha256": "23507bd75c3384ee80b42de149ac255df43eb128920b71b7acffda055ca2f544",
+      "bytes": 591453
+    },
+    "evidence/acceptance/native-dax-19-pass.png": {
+      "sha256": "7c9cf22aec5dc1e734020c06a35ae8ab38983b0febfdaaf6fd17337214655d56",
+      "bytes": 617103
+    },
+    "evidence/acceptance/native-dax-26-pass.png": {
+      "sha256": "189d9e559d6f8b352fb5ddafb53463f1f127a3702a69d36a3dc707372105a3b0",
+      "bytes": 591350
+    },
+    "evidence/acceptance/native_acceptance.dax": {
+      "sha256": "f74c3a5d3edb89ecf9043843fad302180b9f7c12fb15d4314ad7be1af45fe6dd",
+      "bytes": 5133
+    },
+    "evidence/acceptance/native_cases.json": {
+      "sha256": "9d53d0a1c79cb58d311e7e602b72b6a7570f80ee03c7c00ca58e2caa4400f7f5",
+      "bytes": 8577
+    }
+  },
+  "native_model_source": {
+    "project.SemanticModel/definition/cultures/en-US.tmdl": "b5f00542b6ea4eb35a303846968a8c8792e71fa910e8fa6d39431d0d8bdbe423",
+    "project.SemanticModel/definition/database.tmdl": "822c914b643bca32bb20abd8a762df8204a1b9ef02acc2bc7348727f6699cb96",
+    "project.SemanticModel/definition/model.tmdl": "3c6ed9fdce62f48dece795eeaabe34ebe3f10dad19a48949ba6003dacc1fa71b",
+    "project.SemanticModel/definition/relationships.tmdl": "a1629922b3cfcafb7800307596fa44de735fbeaeec03d17c576432207e49106d",
+    "project.SemanticModel/definition/tables/CategoryMart.tmdl": "13ab8af6ac18cfb2acf744e08ccaf6cde2c388ef32ba9c0ff69f694ec58bd533",
+    "project.SemanticModel/definition/tables/Customers.tmdl": "86f1e90b9a345b1452d8a3b396560dd0598abd59682a0f6c42925b400e1dde00",
+    "project.SemanticModel/definition/tables/DateTableTemplate_22cdb056-134f-4931-9387-8317c48ca35d.tmdl": "b20efc8ddbcc98b20f4e54624b08995ba23b2b9e783ccf3e45c2098610b26d14",
+    "project.SemanticModel/definition/tables/Items.tmdl": "e49446c8bc1cca3e89d2ad1a70f92afdcb7d20343fcfaced1b84542c9309e4cb",
+    "project.SemanticModel/definition/tables/LocalDateTable_4ed04d5c-a26d-4aeb-a62a-c404a7089ce9.tmdl": "8621557c54dd27d6f0b20b08d541318a56348ea3053039605e1025249162088a",
+    "project.SemanticModel/definition/tables/LocalDateTable_610933d3-3898-4e63-9fb4-76fbab766036.tmdl": "16fe999d9098b2b9cef3d028b3094453607a2e6e8059c1c3c2293feaabbf0a9e",
+    "project.SemanticModel/definition/tables/LocalDateTable_641921d5-49a6-4dc2-a293-232d56def244.tmdl": "52b640101a65c2e98ee34809ee993a0a0769989be16c0b7d00edd05c4fa196d2",
+    "project.SemanticModel/definition/tables/LocalDateTable_6ba4bace-0544-4398-bfc8-d8987e64a301.tmdl": "7da2482fb43aa66ba99b487b272329dce971ada1f7c67ab5de79c1efd069a271",
+    "project.SemanticModel/definition/tables/LocalDateTable_73db7234-fdf0-49d9-a522-dc6306c2f5d5.tmdl": "912ac4f8d85abfb4018cae7be0501fa23786889c95989613c3fb5f1e3523cfd7",
+    "project.SemanticModel/definition/tables/LocalDateTable_760252d6-611e-4149-a241-a616d95a0c52.tmdl": "ed4ed32d2f95e7611cabd5a4e55e289a9f47c2999c88c8c9db054cee1d35153b",
+    "project.SemanticModel/definition/tables/LocalDateTable_7d2fa4e8-7e05-44f7-b592-c355e13d032e.tmdl": "4cdecc7d0e2457fe375feee1422962d3d579eb6030ef73b02fc3d514b7a1f190",
+    "project.SemanticModel/definition/tables/LocalDateTable_971e2815-551a-438b-9f85-a7c16005710f.tmdl": "85e117768f713285d8bad86885f10bc73580db0e7454b185faf0a1b82bf2357b",
+    "project.SemanticModel/definition/tables/LocalDateTable_a681e758-a909-489c-888a-d307bb63f336.tmdl": "7731f546ef27d539a38f3064051fab506764d8f13ad070a9b98f83724c825015",
+    "project.SemanticModel/definition/tables/LocalDateTable_cb67635a-fb05-4a36-907f-fd8026aa4d2b.tmdl": "56199e01e20542525b2f8188ce74fedad962d050dd889f15eb9771070473bdb6",
+    "project.SemanticModel/definition/tables/LocalDateTable_cd110b86-7537-4a6a-bc7e-9b39d5dcfda2.tmdl": "c3d9a1c8f4f3228b04fb3934b2cc8838e52ae64bf04f52b161604d16baf2ffc0",
+    "project.SemanticModel/definition/tables/LocalDateTable_e6e1751c-0d98-4584-bd3f-81cc13ead1d2.tmdl": "1652740aa400118ad19b38c1e15573795d533fa587da83e977bf2fc455250f65",
+    "project.SemanticModel/definition/tables/LocalDateTable_f1859c75-8077-45d4-88bb-41e0f5674a31.tmdl": "27b4cb68c1321285995a0ecbdc7ada410eaadb833c574dfb98c4ed6c94ba871c",
+    "project.SemanticModel/definition/tables/OlistAll.tmdl": "275342dbfcdbf5a727a290091341f7689f6d57137edd90a0b6357fc6643a91b2",
+    "project.SemanticModel/definition/tables/OrderDelivery.tmdl": "363595f63a1ac109cb5fd17b68c2bfcab95aeeba6b35b2c587b5d39b94d741c8",
+    "project.SemanticModel/definition/tables/Orders.tmdl": "400f7b3bf7580facfc19857612ae3612ea87f2fd158a4426083b5cb2192b5cd9",
+    "project.SemanticModel/definition/tables/Payments.tmdl": "1558f09be7f47118cc2687e06b7edbf3cf4f899db2db28a1b9ab3a3b501e1fdd",
+    "project.SemanticModel/definition/tables/Products.tmdl": "12e2c13fa24602e5c51f7579ef97c7979954aa1a765ee71d1f1e960cf4ad0185",
+    "project.SemanticModel/definition/tables/Reviews.tmdl": "bf48d7002f64b44cb4e213f91c28ae8ed6fc326018d32dd4d0126c1ffb7df089",
+    "project.SemanticModel/definition/tables/SellerMart.tmdl": "db101b63f20a8acca5277c87f6cb5aa74b2b98102401e069359c9b91a82743a5",
+    "project.SemanticModel/definition/tables/Sellers.tmdl": "d2c996d5291c722b804adb857d665b62ab9883bb4c3b14bcb7bda6fa7a789276",
+    "project.SemanticModel/definition/tables/Translation.tmdl": "c40c3945be95707fe2d658cb6cd9293ac3fb69223460d077db518fc5d0e8f811"
+  }
+}

@@ -1,0 +1,31 @@
+EVALUATE
+VAR TestRows = UNION(
+ROW("Case", "seller_29_eligible", "Actual", CALCULATE([Seller Eligible Orders], Sellers[seller_id] = "1464afc72f696af775557a821c2e253f"), "Expected", 29.0, "BlankExpected", FALSE()),
+ROW("Case", "seller_29_rate", "Actual", CALCULATE([Seller Late Rate], Sellers[seller_id] = "1464afc72f696af775557a821c2e253f"), "Expected", BLANK(), "BlankExpected", TRUE()),
+ROW("Case", "seller_30_eligible", "Actual", CALCULATE([Seller Eligible Orders], Sellers[seller_id] = "02f5837340d7eb4f653d676c7256523a"), "Expected", 30.0, "BlankExpected", FALSE()),
+ROW("Case", "seller_30_rate", "Actual", CALCULATE([Seller Late Rate], Sellers[seller_id] = "02f5837340d7eb4f653d676c7256523a"), "Expected", 0.03333333333333333, "BlankExpected", FALSE()),
+ROW("Case", "multi_item_seller", "Actual", CALCULATE([Seller Eligible Orders], Sellers[seller_id] = "6560211a19b47992c3666cc44a7e94c0"), "Expected", 1819.0, "BlankExpected", FALSE()),
+ROW("Case", "multi_seller_order", "Actual", CALCULATE([Delivered Orders], Orders[order_id] = "5a3b1c29a49756e75f1ef513383c0c12"), "Expected", 1.0, "BlankExpected", FALSE()),
+ROW("Case", "multi_seller_pair_1", "Actual", CALCULATE([Seller Eligible Orders], Orders[order_id] = "5a3b1c29a49756e75f1ef513383c0c12", Sellers[seller_id] = "cfb1a033743668a192316f3c6d1d2671"), "Expected", 1.0, "BlankExpected", FALSE()),
+ROW("Case", "multi_seller_pair_2", "Actual", CALCULATE([Seller Eligible Orders], Orders[order_id] = "5a3b1c29a49756e75f1ef513383c0c12", Sellers[seller_id] = "d2374cbcbb3ca4ab1086534108cc3ab7"), "Expected", 1.0, "BlankExpected", FALSE()),
+ROW("Case", "multi_seller_pair_total", "Actual", CALCULATE(SUMX(VALUES(Sellers[seller_id]), [Seller Eligible Orders]), Orders[order_id] = "5a3b1c29a49756e75f1ef513383c0c12"), "Expected", 2.0, "BlankExpected", FALSE()),
+ROW("Case", "multi_category_gmv", "Actual", CALCULATE([GMV], TREATAS({"health_beauty", "watches_gifts"}, CategoryMart[category])), "Expected", 2463687.0199999725, "BlankExpected", FALSE()),
+ROW("Case", "multi_category_freight", "Actual", CALCULATE([Freight Share], TREATAS({"health_beauty", "watches_gifts"}, CategoryMart[category])), "Expected", 0.1030667408070375, "BlankExpected", FALSE()),
+ROW("Case", "multi_category_aov", "Actual", CALCULATE([AOV], TREATAS({"health_beauty", "watches_gifts"}, CategoryMart[category])), "Expected", 170.41481773535148, "BlankExpected", FALSE()),
+ROW("Case", "identity_one_person", "Actual", CALCULATE([Unique Customers], Customers[customer_unique_id] = "8d50f5eadf50201ccdcedfb9e2ac8455"), "Expected", 1.0, "BlankExpected", FALSE()),
+ROW("Case", "identity_repeat_person", "Actual", CALCULATE([Repeat Buyers], Customers[customer_unique_id] = "8d50f5eadf50201ccdcedfb9e2ac8455"), "Expected", 1.0, "BlankExpected", FALSE()),
+ROW("Case", "jan2018_review", "Actual", CALCULATE([Average Review], Orders[Order Month] = "2018-01"), "Expected", 4.108726650506203, "BlankExpected", FALSE()),
+ROW("Case", "jan2018_reviewed", "Actual", CALCULATE([Reviewed Orders], Orders[Order Month] = "2018-01"), "Expected", 7013.0, "BlankExpected", FALSE()),
+ROW("Case", "empty_population", "Actual", CALCULATE([Delivered Orders], Orders[order_id] = "NO_SUCH_ORDER"), "Expected", BLANK(), "BlankExpected", TRUE()),
+ROW("Case", "empty_rate", "Actual", CALCULATE([Late Delivery Rate], Orders[order_id] = "NO_SUCH_ORDER"), "Expected", BLANK(), "BlankExpected", TRUE()),
+ROW("Case", "mom_jan2018", "Actual", CALCULATE([Late Rate MoM pp], Orders[Order Month] = "2018-01"), "Expected", -1.7541583125696008, "BlankExpected", FALSE()),
+ROW("Case", "mom_low_volume_comparator", "Actual", CALCULATE([Late Rate MoM pp], Orders[Order Month] = "2016-10"), "Expected", BLANK(), "BlankExpected", TRUE()),
+ROW("Case", "mom_missing_comparator", "Actual", CALCULATE([Late Rate MoM pp], Orders[Order Month] = "2017-01", Customers[customer_state] = "SP"), "Expected", BLANK(), "BlankExpected", TRUE()),
+ROW("Case", "mom_multiple_months", "Actual", [Late Rate MoM pp], "Expected", BLANK(), "BlankExpected", TRUE()),
+ROW("Case", "mom_partial_month", "Actual", CALCULATE([Late Rate MoM pp], Orders[order_purchase_timestamp] >= DATE(2018,1,10), Orders[order_purchase_timestamp] < DATE(2018,2,1)), "Expected", BLANK(), "BlankExpected", TRUE()),
+ROW("Case", "mom_status_multi", "Actual", IF([Delivery MoM] = "Select one month",1,0), "Expected", 1.0, "BlankExpected", FALSE()),
+ROW("Case", "mom_status_missing", "Actual", IF(CALCULATE([Delivery MoM], Orders[Order Month] = "2016-10") = "Insufficient data",1,0), "Expected", 1.0, "BlankExpected", FALSE()),
+ROW("Case", "mom_status_partial", "Actual", IF(CALCULATE([Delivery MoM], Orders[order_purchase_timestamp] >= DATE(2018,1,10), Orders[order_purchase_timestamp] < DATE(2018,2,1)) = "Full month needed",1,0), "Expected", 1.0, "BlankExpected", FALSE())
+)
+VAR Checked = ADDCOLUMNS(TestRows, "Pass", IF([BlankExpected], IF(ISBLANK([Actual]),1,0), IF(NOT ISBLANK([Actual]) && ABS([Actual]-[Expected]) < 0.00001,1,0)))
+RETURN ROW("Passed", SUMX(Checked,[Pass]), "Total", COUNTROWS(Checked), "Failures", CONCATENATEX(FILTER(Checked,[Pass]=0),[Case], ", "))

@@ -1,0 +1,184 @@
+[
+  {
+    "case": "seller_29_eligible",
+    "sql": "SELECT count(distinct d.order_id) FROM mart_order_delivery d JOIN raw_items i USING(order_id) WHERE i.seller_id='1464afc72f696af775557a821c2e253f'",
+    "expected": 29.0,
+    "dax": "CALCULATE([Seller Eligible Orders], Sellers[seller_id] = \"1464afc72f696af775557a821c2e253f\")",
+    "blank": false
+  },
+  {
+    "case": "seller_29_rate",
+    "sql": "SELECT NULL FROM mart_order_delivery d JOIN raw_items i USING(order_id) WHERE i.seller_id='1464afc72f696af775557a821c2e253f'",
+    "expected": null,
+    "dax": "CALCULATE([Seller Late Rate], Sellers[seller_id] = \"1464afc72f696af775557a821c2e253f\")",
+    "blank": true
+  },
+  {
+    "case": "seller_30_eligible",
+    "sql": "SELECT count(distinct d.order_id) FROM mart_order_delivery d JOIN raw_items i USING(order_id) WHERE i.seller_id='02f5837340d7eb4f653d676c7256523a'",
+    "expected": 30.0,
+    "dax": "CALCULATE([Seller Eligible Orders], Sellers[seller_id] = \"02f5837340d7eb4f653d676c7256523a\")",
+    "blank": false
+  },
+  {
+    "case": "seller_30_rate",
+    "sql": "SELECT count(distinct CASE WHEN d.is_late THEN d.order_id END)::DOUBLE/count(distinct d.order_id) FROM mart_order_delivery d JOIN raw_items i USING(order_id) WHERE i.seller_id='02f5837340d7eb4f653d676c7256523a'",
+    "expected": 0.03333333333333333,
+    "dax": "CALCULATE([Seller Late Rate], Sellers[seller_id] = \"02f5837340d7eb4f653d676c7256523a\")",
+    "blank": false
+  },
+  {
+    "case": "multi_item_seller",
+    "sql": "SELECT count(distinct d.order_id) FROM mart_order_delivery d JOIN raw_items i USING(order_id) WHERE i.seller_id='6560211a19b47992c3666cc44a7e94c0'",
+    "expected": 1819.0,
+    "dax": "CALCULATE([Seller Eligible Orders], Sellers[seller_id] = \"6560211a19b47992c3666cc44a7e94c0\")",
+    "blank": false
+  },
+  {
+    "case": "multi_seller_order",
+    "sql": "SELECT count(distinct order_id) FROM mart_order_delivery WHERE order_id='5a3b1c29a49756e75f1ef513383c0c12'",
+    "expected": 1.0,
+    "dax": "CALCULATE([Delivered Orders], Orders[order_id] = \"5a3b1c29a49756e75f1ef513383c0c12\")",
+    "blank": false
+  },
+  {
+    "case": "multi_seller_pair_1",
+    "sql": "SELECT count(distinct d.order_id) FROM mart_order_delivery d JOIN raw_items i USING(order_id) WHERE d.order_id='5a3b1c29a49756e75f1ef513383c0c12' AND i.seller_id='cfb1a033743668a192316f3c6d1d2671'",
+    "expected": 1.0,
+    "dax": "CALCULATE([Seller Eligible Orders], Orders[order_id] = \"5a3b1c29a49756e75f1ef513383c0c12\", Sellers[seller_id] = \"cfb1a033743668a192316f3c6d1d2671\")",
+    "blank": false
+  },
+  {
+    "case": "multi_seller_pair_2",
+    "sql": "SELECT count(distinct d.order_id) FROM mart_order_delivery d JOIN raw_items i USING(order_id) WHERE d.order_id='5a3b1c29a49756e75f1ef513383c0c12' AND i.seller_id='d2374cbcbb3ca4ab1086534108cc3ab7'",
+    "expected": 1.0,
+    "dax": "CALCULATE([Seller Eligible Orders], Orders[order_id] = \"5a3b1c29a49756e75f1ef513383c0c12\", Sellers[seller_id] = \"d2374cbcbb3ca4ab1086534108cc3ab7\")",
+    "blank": false
+  },
+  {
+    "case": "multi_seller_pair_total",
+    "sql": "SELECT count(distinct i.seller_id) FROM mart_order_delivery d JOIN raw_items i USING(order_id) WHERE d.order_id='5a3b1c29a49756e75f1ef513383c0c12'",
+    "expected": 2.0,
+    "dax": "CALCULATE(SUMX(VALUES(Sellers[seller_id]), [Seller Eligible Orders]), Orders[order_id] = \"5a3b1c29a49756e75f1ef513383c0c12\")",
+    "blank": false
+  },
+  {
+    "case": "multi_category_gmv",
+    "sql": "SELECT sum(price) FROM raw_items i JOIN read_csv_auto('data/olist_products_dataset.csv') p USING(product_id) LEFT JOIN read_csv_auto('data/product_category_name_translation.csv') t USING(product_category_name) WHERE t.product_category_name_english IN ('health_beauty','watches_gifts')",
+    "expected": 2463687.0199999725,
+    "dax": "CALCULATE([GMV], TREATAS({\"health_beauty\", \"watches_gifts\"}, CategoryMart[category]))",
+    "blank": false
+  },
+  {
+    "case": "multi_category_freight",
+    "sql": "SELECT sum(freight_value)/(sum(price)+sum(freight_value)) FROM raw_items i JOIN read_csv_auto('data/olist_products_dataset.csv') p USING(product_id) LEFT JOIN read_csv_auto('data/product_category_name_translation.csv') t USING(product_category_name) WHERE t.product_category_name_english IN ('health_beauty','watches_gifts')",
+    "expected": 0.1030667408070375,
+    "dax": "CALCULATE([Freight Share], TREATAS({\"health_beauty\", \"watches_gifts\"}, CategoryMart[category]))",
+    "blank": false
+  },
+  {
+    "case": "multi_category_aov",
+    "sql": "SELECT sum(price)/count(distinct order_id) FROM raw_items i JOIN read_csv_auto('data/olist_products_dataset.csv') p USING(product_id) LEFT JOIN read_csv_auto('data/product_category_name_translation.csv') t USING(product_category_name) WHERE t.product_category_name_english IN ('health_beauty','watches_gifts')",
+    "expected": 170.41481773535148,
+    "dax": "CALCULATE([AOV], TREATAS({\"health_beauty\", \"watches_gifts\"}, CategoryMart[category]))",
+    "blank": false
+  },
+  {
+    "case": "identity_one_person",
+    "sql": "SELECT count(distinct customer_unique_id) FROM read_csv_auto('data/olist_customers_dataset.csv') WHERE customer_unique_id='8d50f5eadf50201ccdcedfb9e2ac8455'",
+    "expected": 1.0,
+    "dax": "CALCULATE([Unique Customers], Customers[customer_unique_id] = \"8d50f5eadf50201ccdcedfb9e2ac8455\")",
+    "blank": false
+  },
+  {
+    "case": "identity_repeat_person",
+    "sql": "SELECT 1",
+    "expected": 1.0,
+    "dax": "CALCULATE([Repeat Buyers], Customers[customer_unique_id] = \"8d50f5eadf50201ccdcedfb9e2ac8455\")",
+    "blank": false
+  },
+  {
+    "case": "jan2018_review",
+    "sql": "SELECT avg(review_score) FROM mart_order_delivery WHERE order_month=DATE '2018-01-01'",
+    "expected": 4.108726650506203,
+    "dax": "CALCULATE([Average Review], Orders[Order Month] = \"2018-01\")",
+    "blank": false
+  },
+  {
+    "case": "jan2018_reviewed",
+    "sql": "SELECT count(review_score) FROM mart_order_delivery WHERE order_month=DATE '2018-01-01'",
+    "expected": 7013.0,
+    "dax": "CALCULATE([Reviewed Orders], Orders[Order Month] = \"2018-01\")",
+    "blank": false
+  },
+  {
+    "case": "empty_population",
+    "sql": "SELECT NULL",
+    "expected": null,
+    "dax": "CALCULATE([Delivered Orders], Orders[order_id] = \"NO_SUCH_ORDER\")",
+    "blank": true
+  },
+  {
+    "case": "empty_rate",
+    "sql": "SELECT NULL",
+    "expected": null,
+    "dax": "CALCULATE([Late Delivery Rate], Orders[order_id] = \"NO_SUCH_ORDER\")",
+    "blank": true
+  },
+  {
+    "case": "mom_jan2018",
+    "sql": "WITH m AS (SELECT order_month, avg(is_late::INT)*100 rate FROM mart_order_delivery GROUP BY 1) SELECT a.rate-b.rate FROM m a JOIN m b ON b.order_month=a.order_month-INTERVAL '1 month' WHERE a.order_month=DATE '2018-01-01'",
+    "expected": -1.7541583125696008,
+    "dax": "CALCULATE([Late Rate MoM pp], Orders[Order Month] = \"2018-01\")",
+    "blank": false
+  },
+  {
+    "case": "mom_low_volume_comparator",
+    "sql": "SELECT NULL",
+    "expected": null,
+    "dax": "CALCULATE([Late Rate MoM pp], Orders[Order Month] = \"2016-10\")",
+    "blank": true
+  },
+  {
+    "case": "mom_missing_comparator",
+    "sql": "SELECT NULL",
+    "expected": null,
+    "dax": "CALCULATE([Late Rate MoM pp], Orders[Order Month] = \"2017-01\", Customers[customer_state] = \"SP\")",
+    "blank": true
+  },
+  {
+    "case": "mom_multiple_months",
+    "sql": "SELECT NULL",
+    "expected": null,
+    "dax": "[Late Rate MoM pp]",
+    "blank": true
+  },
+  {
+    "case": "mom_partial_month",
+    "sql": "SELECT NULL",
+    "expected": null,
+    "dax": "CALCULATE([Late Rate MoM pp], Orders[order_purchase_timestamp] >= DATE(2018,1,10), Orders[order_purchase_timestamp] < DATE(2018,2,1))",
+    "blank": true
+  },
+  {
+    "case": "mom_status_multi",
+    "sql": "SELECT 1",
+    "expected": 1.0,
+    "dax": "IF([Delivery MoM] = \"Select one month\",1,0)",
+    "blank": false
+  },
+  {
+    "case": "mom_status_missing",
+    "sql": "SELECT 1",
+    "expected": 1.0,
+    "dax": "IF(CALCULATE([Delivery MoM], Orders[Order Month] = \"2016-10\") = \"Insufficient data\",1,0)",
+    "blank": false
+  },
+  {
+    "case": "mom_status_partial",
+    "sql": "SELECT 1",
+    "expected": 1.0,
+    "dax": "IF(CALCULATE([Delivery MoM], Orders[order_purchase_timestamp] >= DATE(2018,1,10), Orders[order_purchase_timestamp] < DATE(2018,2,1)) = \"Full month needed\",1,0)",
+    "blank": false
+  }
+]

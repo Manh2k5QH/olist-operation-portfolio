@@ -1,0 +1,313 @@
+{
+  "version": "3.1",
+  "as_of": "2026-11-27",
+  "source_note": "Canonical requirement register. Markdown and Excel are projections of these rows.",
+  "requirements": [
+    {
+      "requirement_id": "REQ-001",
+      "story_id": "US-001",
+      "rule_id": "BR-001",
+      "title": "Delivery exception queue",
+      "stakeholder_id": "SH-001",
+      "finding_ids": [
+        "F-01",
+        "F-03"
+      ],
+      "priority": "Must",
+      "stage": "Pilot design",
+      "owner_role": "Logistics",
+      "evidence_status": "Live events and intervention log required",
+      "sql_artifact": "sql/views/01_stg_orders.sql",
+      "acceptance_id": "AC-001",
+      "given": "ETA is within the agreed threshold and delivery is unconfirmed",
+      "when": "the queue refreshes",
+      "then": "one active case appears with order_id, owner, due date, threshold version and flag time",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-002",
+      "story_id": "US-002",
+      "rule_id": "BR-002",
+      "title": "Delivery experience comparison",
+      "stakeholder_id": "SH-002",
+      "finding_ids": [
+        "F-01",
+        "F-02"
+      ],
+      "priority": "Must",
+      "stage": "Analytical implementation",
+      "owner_role": "CX",
+      "evidence_status": "Historical SQL + native DAX UAT passed; operational acceptance separate",
+      "sql_artifact": "sql/analysis/02_delivery_analysis.sql",
+      "acceptance_id": "AC-002",
+      "given": "eligible delivered orders with and without reviews",
+      "when": "the period and state are selected",
+      "then": "late and on-time counts, reviewed counts and mean order-level scores use the same delivery cohort",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-003",
+      "story_id": "US-003",
+      "rule_id": "BR-003",
+      "title": "State delivery prioritization",
+      "stakeholder_id": "SH-001",
+      "finding_ids": [
+        "F-03"
+      ],
+      "priority": "Must",
+      "stage": "Analytical implementation",
+      "owner_role": "Logistics",
+      "evidence_status": "Historical SQL + native DAX UAT passed; operational acceptance separate",
+      "sql_artifact": "sql/analysis/02_delivery_analysis.sql",
+      "acceptance_id": "AC-003",
+      "given": "states have differing rate and volume",
+      "when": "the risk view is opened",
+      "then": "both late count and late rate appear with denominator, threshold and missing-date coverage",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-004",
+      "story_id": "US-004",
+      "rule_id": "BR-004",
+      "title": "Delivery trend",
+      "stakeholder_id": "SH-001",
+      "finding_ids": [
+        "F-01",
+        "F-10"
+      ],
+      "priority": "Must",
+      "stage": "Analytical implementation",
+      "owner_role": "BI",
+      "evidence_status": "Historical SQL + native DAX UAT passed; operational acceptance separate",
+      "sql_artifact": "sql/analysis/02_delivery_analysis.sql",
+      "acceptance_id": "AC-004",
+      "given": "the prior calendar month has no eligible deliveries",
+      "when": "a monthly change is calculated",
+      "then": "the missing comparator is displayed as unavailable and sparse periods are flagged",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-005",
+      "story_id": "US-005",
+      "rule_id": "BR-005",
+      "title": "Seller exposure scorecard",
+      "stakeholder_id": "SH-004",
+      "finding_ids": [
+        "F-07"
+      ],
+      "priority": "Must",
+      "stage": "Analytical implementation",
+      "owner_role": "Seller lead",
+      "evidence_status": "Historical SQL + native DAX UAT passed; operational acceptance separate",
+      "sql_artifact": "sql/views/04_mart_seller.sql",
+      "acceptance_id": "AC-005",
+      "given": "a seller has multiple items on one eligible order",
+      "when": "the scorecard aggregates delivery outcomes",
+      "then": "that seller-order counts once and the late count cannot exceed the eligible delivered count",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-006",
+      "story_id": "US-006",
+      "rule_id": "BR-006",
+      "title": "Seller comparison guardrails",
+      "stakeholder_id": "SH-004",
+      "finding_ids": [
+        "F-07"
+      ],
+      "priority": "Must",
+      "stage": "Analytical implementation",
+      "owner_role": "Seller lead",
+      "evidence_status": "Historical SQL + native DAX UAT passed; operational acceptance separate",
+      "sql_artifact": "sql/analysis/05_seller_performance.sql",
+      "acceptance_id": "AC-006",
+      "given": "a seller has fewer than 30 eligible delivered orders",
+      "when": "the comparison is displayed",
+      "then": "the rate retains its denominator and is marked insufficient sample, with no punitive recommendation",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-007",
+      "story_id": "US-007",
+      "rule_id": "BR-007",
+      "title": "New seller quality gate",
+      "stakeholder_id": "SH-005",
+      "finding_ids": [
+        "F-07"
+      ],
+      "priority": "Could",
+      "stage": "Future design",
+      "owner_role": "Seller lead",
+      "evidence_status": "Onboarding date and policy required",
+      "sql_artifact": "",
+      "acceptance_id": "AC-007",
+      "given": "a seller reaches an agreed observation threshold",
+      "when": "a quality review occurs",
+      "then": "a human reviews evidence and records the decision and dispute path",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-008",
+      "story_id": "US-008",
+      "rule_id": "BR-008",
+      "title": "Customer multi-order baseline",
+      "stakeholder_id": "SH-006",
+      "finding_ids": [
+        "F-08"
+      ],
+      "priority": "Must",
+      "stage": "Analytical implementation",
+      "owner_role": "Growth",
+      "evidence_status": "Historical SQL + native DAX UAT passed; operational acceptance separate",
+      "sql_artifact": "sql/analysis/03_customer_analysis.sql",
+      "acceptance_id": "AC-008",
+      "given": "one customer_unique_id appears on two customer_id values",
+      "when": "the snapshot share is calculated",
+      "then": "the person counts once in the denominator and once in the multi-order numerator",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-009",
+      "story_id": "US-009",
+      "rule_id": "BR-009",
+      "title": "Customer recovery workflow",
+      "stakeholder_id": "SH-002",
+      "finding_ids": [
+        "F-02"
+      ],
+      "priority": "Should",
+      "stage": "Future design",
+      "owner_role": "CX",
+      "evidence_status": "Consent, service history and budget required",
+      "sql_artifact": "",
+      "acceptance_id": "AC-009",
+      "given": "a confirmed late order meets an approved recovery policy",
+      "when": "a case is assigned",
+      "then": "the action, consent, cost and outcome are recorded and duplicate contacts are prevented",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-010",
+      "story_id": "US-010",
+      "rule_id": "BR-010",
+      "title": "Review theme analysis",
+      "stakeholder_id": "SH-002",
+      "finding_ids": [
+        "F-02"
+      ],
+      "priority": "Could",
+      "stage": "Future design",
+      "owner_role": "CX",
+      "evidence_status": "Labeled review sample and validation required",
+      "sql_artifact": "",
+      "acceptance_id": "AC-010",
+      "given": "a manually labeled Portuguese review sample exists",
+      "when": "a theme model is evaluated",
+      "then": "precision and recall by theme and uncertain predictions are reported before production use",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-011",
+      "story_id": "US-011",
+      "rule_id": "BR-011",
+      "title": "Customer cohort follow-up",
+      "stakeholder_id": "SH-006",
+      "finding_ids": [
+        "F-08"
+      ],
+      "priority": "Should",
+      "stage": "Analytical implementation",
+      "owner_role": "Growth",
+      "evidence_status": "SQL cohort output accepted; native cohort page outside five-page scope",
+      "sql_artifact": "sql/analysis/03_customer_analysis.sql",
+      "acceptance_id": "AC-011",
+      "given": "a cohort lacks a full observation window",
+      "when": "retention is displayed",
+      "then": "unobserved periods remain unavailable and observed zero-return periods display zero",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-012",
+      "story_id": "US-012",
+      "rule_id": "BR-012",
+      "title": "Category merchandise and freight",
+      "stakeholder_id": "SH-007",
+      "finding_ids": [
+        "F-05",
+        "F-09"
+      ],
+      "priority": "Must",
+      "stage": "Analytical implementation",
+      "owner_role": "Commercial",
+      "evidence_status": "Historical SQL + native DAX UAT passed; operational acceptance separate",
+      "sql_artifact": "sql/views/03_mart_category.sql",
+      "acceptance_id": "AC-012",
+      "given": "more than one category is selected",
+      "when": "freight share is summarized",
+      "then": "total freight is divided by total merchandise plus freight for the same selected items",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-013",
+      "story_id": "US-013",
+      "rule_id": "BR-013",
+      "title": "Freight exposure alert",
+      "stakeholder_id": "SH-008",
+      "finding_ids": [
+        "F-09"
+      ],
+      "priority": "Should",
+      "stage": "Future design",
+      "owner_role": "Category",
+      "evidence_status": "Configurable materiality threshold required",
+      "sql_artifact": "sql/analysis/04_revenue_category.sql",
+      "acceptance_id": "AC-013",
+      "given": "a category exceeds an agreed ratio and monetary materiality threshold",
+      "when": "the period closes",
+      "then": "one investigation is created with supporting amounts, volume and policy version",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-014",
+      "story_id": "US-014",
+      "rule_id": "BR-014",
+      "title": "Monthly merchandise baseline",
+      "stakeholder_id": "SH-007",
+      "finding_ids": [
+        "F-05",
+        "F-10"
+      ],
+      "priority": "Must",
+      "stage": "Analytical implementation",
+      "owner_role": "Commercial",
+      "evidence_status": "Historical SQL + native DAX UAT passed; operational acceptance separate",
+      "sql_artifact": "sql/analysis/04_revenue_category.sql",
+      "acceptance_id": "AC-014",
+      "given": "all-status GMV is selected",
+      "when": "the monthly trend is totaled",
+      "then": "the result reconciles to the all-item control total and identifies incomplete edge months",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    },
+    {
+      "requirement_id": "REQ-015",
+      "story_id": "US-015",
+      "rule_id": "BR-015",
+      "title": "Metric governance",
+      "stakeholder_id": "SH-009",
+      "finding_ids": [
+        "F-05",
+        "F-06"
+      ],
+      "priority": "Must",
+      "stage": "Analytical implementation",
+      "owner_role": "BI",
+      "evidence_status": "Historical SQL + native DAX UAT passed; operational acceptance separate",
+      "sql_artifact": "sql/analysis/01_control_totals.sql",
+      "acceptance_id": "AC-015",
+      "given": "a KPI definition or source version changes",
+      "when": "a release is prepared",
+      "then": "SQL, evidence, DAX, visual, README and memo identify the same definition and population",
+      "uat_artifact": "docs/14_dashboard_uat.md#final-local-acceptance"
+    }
+  ]
+}
